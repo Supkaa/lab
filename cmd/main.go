@@ -33,6 +33,8 @@ func main() {
 	tokenAuth := jwtauth.New("HS256", []byte("secret"), nil)
 	userHandler := handlers.NewUserHandler(services.NewUserService(repositories.NewUserRepo(db), repositories.NewUserRepo(db)), tokenAuth)
 
+	newHandler := handlers.NewNewHandler(services.NewNewService(repositories.NewNewCache(repositories.NewNewRepo(db))))
+
 	router := chi.NewRouter()
 
 	router.Use(middleware.RequestID)
@@ -81,6 +83,9 @@ func main() {
 		router.Get("/users", userHandler.GetAll)
 		router.Get("/users/{email}", userHandler.GetByID)
 		router.Put("/users/{email}", userHandler.Update)
+
+		router.Get("/news", newHandler.GetAll)
+		router.Get("/news/{id}", newHandler.GetById)
 	})
 
 	router.Post("/signup", userHandler.SignUp)
