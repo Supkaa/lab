@@ -166,8 +166,8 @@ func (h UserHandler) Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	claims := map[string]interface{}{"email": user.Email, "role": user.Role}
-	jwtauth.SetExpiryIn(claims, 2*time.Minute)
+	claims := map[string]interface{}{"email": user.Email}
+	jwtauth.SetExpiryIn(claims, 30*time.Minute)
 	_, tokenString, err := h.jwt.Encode(claims)
 
 	if err != nil {

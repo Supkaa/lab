@@ -31,7 +31,8 @@ func main() {
 	roleHandler := handlers.NewRoleHandler(roleService)
 
 	tokenAuth := jwtauth.New("HS256", []byte("secret"), nil)
-	userHandler := handlers.NewUserHandler(services.NewUserService(repositories.NewUserRepo(db), repositories.NewUserRepo(db)), tokenAuth)
+	userService := services.NewUserService(repositories.NewUserRepo(db), repositories.NewUserRepo(db))
+	userHandler := handlers.NewUserHandler(userService, tokenAuth)
 
 	router := chi.NewRouter()
 
@@ -49,7 +50,8 @@ func main() {
 			return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				ctx := r.Context()
 				_, claims, _ := jwtauth.FromContext(r.Context())
-				role, _ := roleService.GetByName(ctx, claims["role"].(string))
+				user, _ := userService.GetByEmail(ctx, claims["email"].(string))
+				role, _ := roleService.GetByName(ctx, user.Role)
 
 				chiCtx := chi.RouteContext(ctx)
 				for _, endpoint := range role.Endpoints {
