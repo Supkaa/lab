@@ -99,5 +99,7 @@ func main() {
 		return nil
 	})
 
+	router.Handle("/storage/images/*", http.StripPrefix("/storage/images/", http.FileServer(http.Dir("storage/images/"))))
+
 	http.ListenAndServe(":3333", router)
 }

@@ -1,1 +1,4 @@
-storage/*
+storage/lab2.db
+storage/images/*.png
+storage/images/*.jpg
+storage/images/*.jpeg
