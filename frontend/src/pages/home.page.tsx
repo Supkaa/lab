@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {IUser} from "../interfaces/IUser";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Navbar from "../shared/navbar";
 
 const HomePage = () => {
     const [users, setUsers] = useState<IUser[] | null>(null);
