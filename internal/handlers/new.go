@@ -5,16 +5,16 @@ import (
 	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/render"
+	"github.com/google/uuid"
 	"lab2/internal/entities"
 	"net/http"
 	"slices"
-	"strconv"
 	"strings"
 )
 
 type NewService interface {
 	GetAll(ctx context.Context, orderBy string, order string) ([]entities.New, error)
-	GetByID(ctx context.Context, id int) (entities.New, error)
+	GetByID(ctx context.Context, id uuid.UUID) (entities.New, error)
 }
 
 type NewHandler struct {
@@ -91,7 +91,7 @@ func (h NewHandler) GetAll(w http.ResponseWriter, r *http.Request) {
 func (h NewHandler) GetById(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
-	id, err := strconv.Atoi(chi.URLParam(r, "id"))
+	id, err := uuid.Parse(chi.URLParam(r, "id"))
 
 	if err != nil {
 		render.Render(w, r, BadRequestRender("wrong id type"))

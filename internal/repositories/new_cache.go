@@ -3,6 +3,7 @@ package repositories
 import (
 	"cmp"
 	"context"
+	"github.com/google/uuid"
 	"lab2/internal/entities"
 	"slices"
 	"sync"
@@ -11,12 +12,12 @@ import (
 
 type NewCache struct {
 	nr   NewRepo
-	news map[int]entities.New
+	news map[uuid.UUID]entities.New
 	mu   sync.RWMutex
 }
 
 func NewNewCache(newRepo NewRepo) *NewCache {
-	c := &NewCache{nr: newRepo, news: make(map[int]entities.New)}
+	c := &NewCache{nr: newRepo, news: make(map[uuid.UUID]entities.New)}
 
 	go c.cronUpdateCache()
 
@@ -96,7 +97,7 @@ func (c *NewCache) GetAll(ctx context.Context, orderBy string, order string) ([]
 	return news, nil
 }
 
-func (c *NewCache) GetById(ctx context.Context, id int) (entities.New, error) {
+func (c *NewCache) GetById(ctx context.Context, id uuid.UUID) (entities.New, error) {
 	if n, found := c.news[id]; found {
 		return n, nil
 	}
@@ -113,7 +114,7 @@ func (c *NewCache) GetById(ctx context.Context, id int) (entities.New, error) {
 }
 
 func (c *NewCache) rewrite(news []entities.New) {
-	newNews := make(map[int]entities.New)
+	newNews := make(map[uuid.UUID]entities.New)
 
 	for _, n := range news {
 		newNews[n.Id] = n

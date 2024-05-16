@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	sq "github.com/Masterminds/squirrel"
+	"github.com/google/uuid"
 	"lab2/internal/entities"
 )
 
@@ -48,7 +49,7 @@ func (r NewRepo) GetAll(ctx context.Context, orderBy string, order string) ([]en
 	return news, nil
 }
 
-func (r NewRepo) GetById(ctx context.Context, id int) (entities.New, error) {
+func (r NewRepo) GetById(ctx context.Context, id uuid.UUID) (entities.New, error) {
 	var n entities.New
 	row := r.db.QueryRowContext(ctx, `SELECT
     	n.id, n.title, n.image, n.summary, n.created_at,

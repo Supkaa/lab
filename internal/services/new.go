@@ -2,12 +2,13 @@ package services
 
 import (
 	"context"
+	"github.com/google/uuid"
 	"lab2/internal/entities"
 )
 
 type NewReader interface {
 	GetAll(ctx context.Context, orderBy string, order string) ([]entities.New, error)
-	GetById(ctx context.Context, id int) (entities.New, error)
+	GetById(ctx context.Context, id uuid.UUID) (entities.New, error)
 }
 
 type NewService struct {
@@ -22,6 +23,6 @@ func (s NewService) GetAll(ctx context.Context, orderBy string, order string) ([
 	return s.r.GetAll(ctx, orderBy, order)
 }
 
-func (s NewService) GetByID(ctx context.Context, id int) (entities.New, error) {
+func (s NewService) GetByID(ctx context.Context, id uuid.UUID) (entities.New, error) {
 	return s.r.GetById(ctx, id)
 }
