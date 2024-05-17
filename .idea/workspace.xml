@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f211cd50-4124-4800-b99f-8973a97cb0d0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/cmd/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/api/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/parser/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/parser/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/interfaces/INews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/interfaces/INews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/news-detail.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/news-detail.page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/news.page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/news.page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -3,7 +3,7 @@ export interface INews {
     title: string
     summary: string
     image: string
-    created_at: string
+    createdAt: string
     likes: number
     dislikes: number
     views: number

@@ -56,7 +56,7 @@ const NewsDetailPage = () => {
                         <img style={{ height: 200, backgroundColor: 'gray', width: '100%' }} src={news.image} alt={news.title} />
                     )}
                     <p className="text-gray-600">{news.summary}</p>
-                    <p className="text-gray-600">Дата публикации: {new Date(news.created_at).toLocaleDateString()}</p>
+                    <p className="text-gray-600">Дата публикации: {new Date(news.createdAt).toLocaleDateString()}</p>
                     <p className="text-gray-600">Просмотры: {news.views}</p>
                     <p className="text-gray-600 flex gap-2">Лайки: {localStorage.getItem(`likes-${id}`) || 0}
                         <svg

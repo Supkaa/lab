@@ -65,7 +65,7 @@ const NewsPage = () => {
                             )}
                         </Link>
                         <p className="text-gray-600">{n.summary}</p>
-                        <p className="text-gray-600">{new Date(n.created_at).toLocaleDateString()}</p>
+                        <p className="text-gray-600">{new Date(n.createdAt).toLocaleDateString()}</p>
                         <p className="text-gray-600 flex gap-2">{localStorage.getItem(`views-${n.id}`) || 0}
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round"
