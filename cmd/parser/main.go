@@ -21,7 +21,7 @@ func main() {
 		log.Panicf("fail to connect db: %s", err.Error())
 	}
 
-	pageCount := 435
+	pageCount := 20
 	rawNews := make(chan []string, pageCount)
 	done := make(chan struct{})
 	wg := sync.WaitGroup{}
